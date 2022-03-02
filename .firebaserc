@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "appinventorgenealopaco2": {
+      "hosting": {
+        "family-tree-akita": [
+          "appinventorgenealopaco2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "appinventorgenealopaco2"
+  }
+}
