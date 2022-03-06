@@ -113,14 +113,7 @@
           }
         },
         "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {
-            "prerender": false,
-            "ssr": false,
-            "browserTarget": "family-tree-akita:build:production",
-            "firebaseProject": "appinventorgenealopaco2",
-            "firebaseHostingSite": "appinventorgenealopaco2"
-          }
+          "builder": "angular-cli-ghpages:deploy"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
