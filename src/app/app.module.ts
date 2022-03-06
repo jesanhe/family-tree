@@ -27,7 +27,23 @@ import {
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { PersonDetailsModule } from './components/person-details/person-details.module';
 import { HeaderModule } from './components/header/header.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { PersonListModule } from './components/person-list/person-list.module';
 
+const firebaseImports = [
+  provideFirebaseApp(() => initializeApp(environment.firebase)),
+  provideAnalytics(() => getAnalytics()),
+  provideAuth(() => getAuth()),
+  provideDatabase(() => getDatabase()),
+  provideFirestore(() => getFirestore()),
+  provideFunctions(() => getFunctions()),
+  provideMessaging(() => getMessaging()),
+  providePerformance(() => getPerformance()),
+  provideRemoteConfig(() => getRemoteConfig()),
+  provideStorage(() => getStorage()),
+];
+
+const firebaseProvides = [ScreenTrackingService, UserTrackingService];
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -35,26 +51,16 @@ import { HeaderModule } from './components/header/header.module';
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideFunctions(() => getFunctions()),
-    provideMessaging(() => getMessaging()),
-    providePerformance(() => getPerformance()),
-    provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage()),
+    AngularFireModule.initializeApp(environment.firebase),
     PersonDetailsModule,
     HeaderModule,
+    PersonListModule,
   ],
   providers: [
     {
       provide: NG_ENTITY_SERVICE_CONFIG,
       useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' },
     },
-    ScreenTrackingService,
-    UserTrackingService,
   ],
   bootstrap: [AppComponent],
 })

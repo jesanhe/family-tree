@@ -1,5 +1,60 @@
-@use "mixins";
+@import "mixins";
 
 :host {
   @include glass;
+
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  flex-shrink: 0;
+  height: 58px;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 30px;
+  white-space: nowrap;
+
+  @media screen and (max-width: 480px) {
+    padding: 0 16px;
+  }
+}
+
+.header-menu {
+  display: flex;
+  align-items: center;
+
+  a {
+    padding: 20px 30px;
+    text-decoration: none;
+    color: var(--inactive-color);
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+
+    @media screen and (max-width: 610px) {
+      &:not(.main-header-link) {
+        display: none;
+      }
+    }
+
+    &.is-active,
+    &:hover {
+      color: var(--theme-color);
+      border-bottom: 2px solid var(--theme-color);
+    }
+  }
+}
+
+.dark-light {
+  background-color: var(--dropdown-bg);
+  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  svg {
+    width: 24px;
+    flex-shrink: 0;
+    fill: #ffce45;
+    stroke: #ffce45;
+    transition: 0.5s;
+  }
 }

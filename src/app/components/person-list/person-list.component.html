@@ -1,0 +1,9 @@
+<ul *ngIf="persons$ | async as persons">
+  <li *ngFor="let person of persons">
+    <a [routerLink]="['/person', person.id]" routerLinkActive="active">
+      <span>
+        {{ person.name + " " + person.surname1 + " " + person.surname2 }}
+      </span>
+    </a>
+  </li>
+</ul>

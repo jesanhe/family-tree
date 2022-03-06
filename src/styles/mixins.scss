@@ -1,4 +1,6 @@
 @mixin glass {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  --blur-value: 20px;
+
+  background-color: var(--theme-bg-color);
+  backdrop-filter: blur(var(--blur-value));
 }

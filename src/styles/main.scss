@@ -11,7 +11,7 @@
 }
 
 :root {
-  --theme-bg-color: rgba(16 18 27 / 40%);
+  --theme-bg-color: rgba(16 18 27 / 50%);
   --border-color: rgba(113 119 144 / 25%);
   --theme-color: #f9fafb;
   --inactive-color: rgb(113 119 144 / 78%);
@@ -58,12 +58,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2em;
   width: 100%;
   height: 100vh;
-  @media screen and (max-width: 480px) {
-    padding: 0.8em;
-  }
 }
 
 .video-bg {
@@ -82,25 +78,6 @@ body {
 
 img {
   max-width: 100%;
-}
-
-.dark-light {
-  position: fixed;
-  bottom: 50px;
-  right: 30px;
-  background-color: var(--dropdown-bg);
-  box-shadow: -1px 3px 8px -1px rgba(0, 0, 0, 0.2);
-  padding: 8px;
-  border-radius: 50%;
-  z-index: 3;
-  cursor: pointer;
-  svg {
-    width: 24px;
-    flex-shrink: 0;
-    fill: #ffce45;
-    stroke: #ffce45;
-    transition: 0.5s;
-  }
 }
 
 .light-mode {
@@ -140,53 +117,13 @@ body.light-mode .video-bg:before {
 
 .card {
   background-color: var(--theme-bg-color);
-  max-width: 1250px;
-  max-height: 860px;
-  height: 90vh;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
-  width: 100%;
   border-radius: 14px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   font-size: 15px;
   font-weight: 500;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  height: 58px;
-  width: 100%;
-  border-bottom: 1px solid var(--border-color);
-  padding: 0 30px;
-  white-space: nowrap;
-  @media screen and (max-width: 480px) {
-    padding: 0 16px;
-  }
-  &-menu {
-    display: flex;
-    align-items: center;
-    a {
-      padding: 20px 30px;
-      text-decoration: none;
-      color: var(--inactive-color);
-      border-bottom: 2px solid transparent;
-      transition: 0.3s;
-      @media screen and (max-width: 610px) {
-        &:not(.main-header-link) {
-          display: none;
-        }
-      }
-      &.is-active,
-      &:hover {
-        color: var(--theme-color);
-        border-bottom: 2px solid var(--theme-color);
-      }
-    }
-  }
 }
 
 .notify {
@@ -338,30 +275,6 @@ body.light-mode .video-bg:before {
 .side-title {
   color: var(--inactive-color);
   margin-bottom: 14px;
-}
-
-.side-menu {
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
-  a {
-    text-decoration: none;
-    color: var(--theme-color);
-    display: flex;
-    align-items: center;
-    font-weight: 400;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 6px;
-    transition: 0.3s;
-    &:hover {
-      background-color: var(--hover-menu-bg);
-    }
-  }
-  svg {
-    width: 16px;
-    margin-right: 8px;
-  }
 }
 
 .updates {

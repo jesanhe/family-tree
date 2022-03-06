@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { takeUntil, tap } from 'rxjs/operators';
 import { Person } from './person.model';
@@ -16,8 +15,7 @@ export class PersonsService implements OnDestroy {
 
   constructor(
     private personsStore: PersonsStore,
-    private firestore: AngularFirestore,
-    private http: HttpClient
+    private firestore: AngularFirestore
   ) {
     this.personCollection = firestore.collection('person');
     this.fetch();
@@ -30,7 +28,9 @@ export class PersonsService implements OnDestroy {
 
   fetch() {
     this.personCollection
-      .valueChanges()
+      .valueChanges({
+        idField: 'id',
+      })
       .pipe(takeUntil(this.unsubscriber))
       .subscribe((person: Person[]) => {
         this.personsStore.set(person);
