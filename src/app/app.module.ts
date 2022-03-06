@@ -7,21 +7,29 @@ import { NG_ENTITY_SERVICE_CONFIG } from '@datorama/akita-ng-entity-service';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from '../environments/environment';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideFunctions,getFunctions } from '@angular/fire/functions';
-import { provideMessaging,getMessaging } from '@angular/fire/messaging';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import {
+  provideAnalytics,
+  getAnalytics,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/analytics';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { providePerformance, getPerformance } from '@angular/fire/performance';
+import {
+  provideRemoteConfig,
+  getRemoteConfig,
+} from '@angular/fire/remote-config';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+import { PersonDetailsModule } from './components/person-details/person-details.module';
+import { HeaderModule } from './components/header/header.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,9 +44,18 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     provideMessaging(() => getMessaging()),
     providePerformance(() => getPerformance()),
     provideRemoteConfig(() => getRemoteConfig()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    PersonDetailsModule,
+    HeaderModule,
   ],
-  providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' }}, ScreenTrackingService,UserTrackingService],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: NG_ENTITY_SERVICE_CONFIG,
+      useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' },
+    },
+    ScreenTrackingService,
+    UserTrackingService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
